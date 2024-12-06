@@ -1,7 +1,6 @@
 import type { ConfigType, OptionType, Dayjs } from 'dayjs';
 import { isPromise } from './object';
 import datejs from './date';
-
 export interface AnyFunction<Result = unknown> {
     (...args: unknown[]): Result;
 }
