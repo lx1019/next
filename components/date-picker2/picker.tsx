@@ -33,6 +33,7 @@ import type {
     RangePanelProps,
     InputNode,
 } from './types';
+import { getValueWithDayjs } from '../util/func';
 
 const { Popup } = Overlay;
 const { pickProps, pickOthers } = obj;
