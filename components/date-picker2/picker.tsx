@@ -25,15 +25,6 @@ import type {
     InputNode,
 } from './types';
 import { getValueWithDayjs } from '../util/func';
-import type {
-    DatePickerProps,
-    DatePickerState,
-    ModeType,
-    DatePanelProps,
-    RangePanelProps,
-    InputNode,
-} from './types';
-import { getValueWithDayjs } from '../util/func';
 
 const { Popup } = Overlay;
 const { pickProps, pickOthers } = obj;
