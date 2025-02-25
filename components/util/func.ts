@@ -133,7 +133,7 @@ export function invoke<Result = unknown>(
 
 export function renderNode<Result = unknown>(
     render: AnyFunction<Result> | Result | undefined,
-    defaultRender: AnyFunction<Result> | Result | undefined,
+    defaultRender?: AnyFunction<Result> | Result | undefined,
     renderProps: unknown = []
 ): Result | undefined {
     const r = render !== undefined ? render : defaultRender;
