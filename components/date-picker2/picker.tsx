@@ -193,9 +193,15 @@ class Picker extends React.Component<DatePickerProps, DatePickerState> {
         }
 
         if ('value' in props) {
-            const value = isRange
-                ? checkRangeDate(props.value, state.inputType, disabled)
-                : checkDate(props.value);
+            let value = getValueWithDayjs(props.value, format as string) as
+                | Dayjs
+                | [Dayjs | null, Dayjs | null]
+                | null
+                | undefined;
+
+            value = isRange
+                ? checkRangeDate(value, state.inputType!, disabled)
+                : checkDate(value as Dayjs | null);
 
             if (isValueChanged(value, state.preValue!)) {
                 newState = {
@@ -240,11 +246,13 @@ class Picker extends React.Component<DatePickerProps, DatePickerState> {
      */
     getInitValue = () => {
         const { props } = this;
-        const { type, value, defaultValue } = props;
+        const { type, value, defaultValue, format } = props;
 
         let val: DatePickerProps['value'] = type === DATE_PICKER_TYPE.RANGE ? [null, null] : null;
 
         val = 'value' in props ? value! : 'defaultValue' in props ? defaultValue! : val;
+
+        val = getValueWithDayjs(val, format as string);
 
         return this.checkValue(val);
     };

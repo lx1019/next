@@ -1351,18 +1351,18 @@ describe('Picker', () => {
             defaultValueList.forEach(defaultValue => {
                 const inValue = defaultValue.map(item => item.in);
                 const outValue = defaultValue.map(item => item.out);
-                wrapper = mount(<RangePicker defaultValue={inValue} mode="quarter" />);
-                assert.deepEqual(getStrValue(), outValue);
+                cy.mount(<RangePicker defaultValue={inValue} mode="quarter" />);
+                checkInputValue(outValue);
             });
 
-            defaultValueList = [
+            let newDefaultValueList = [
                 { in: '2021-Q3', out: '2021-Q3' },
                 { in: '2021-7-1', out: '2021-Q3' },
             ];
-            defaultValueList.forEach(defaultValue => {
+            newDefaultValueList.forEach(defaultValue => {
                 const { in: inValue, out: outValue } = defaultValue;
-                wrapper = mount(<QuarterPicker defaultValue={inValue} />);
-                assert(getStrValue() === outValue);
+                cy.mount(<QuarterPicker defaultValue={inValue} />);
+                checkInputValue(outValue);
             });
 
             let valueList = [
@@ -1378,18 +1378,18 @@ describe('Picker', () => {
             valueList.forEach(value => {
                 const inValue = value.map(item => item.in);
                 const outValue = value.map(item => item.out);
-                wrapper = mount(<RangePicker value={inValue} mode="quarter" />);
-                assert.deepEqual(getStrValue(), outValue);
+                cy.mount(<RangePicker value={inValue} mode="quarter" />);
+                checkInputValue(outValue);
             });
 
-            valueList = [
+            let newValueList = [
                 { in: '2021-Q3', out: '2021-Q3' },
                 { in: '2021-7-1', out: '2021-Q3' },
             ];
-            valueList.forEach(value => {
+            newValueList.forEach(value => {
                 const { in: inValue, out: outValue } = value;
-                wrapper = mount(<QuarterPicker value={inValue} />);
-                assert(getStrValue() === outValue);
+                cy.mount(<QuarterPicker value={inValue} />);
+                checkInputValue(outValue);
             });
         });
     });
