@@ -255,7 +255,7 @@ class Picker extends React.Component<DatePickerProps, DatePickerState> {
      */
     getInitValue = () => {
         const { props } = this;
-        const { type, value, defaultValue, format } = props;
+        const { type, value, defaultValue } = props;
 
         let val: DatePickerProps['value'] = type === DATE_PICKER_TYPE.RANGE ? [null, null] : null;
 
